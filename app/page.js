@@ -27,68 +27,70 @@ export default function CurrencyConverter() {
   }, [fromAmount, toAmount]);
 
   return (
-    <Card className="w-full max-w-md mx-auto m-5">
-      <CardHeader>
-        <CardTitle>Currency Converter</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="fromAmount">From</Label>
-            <Input
-              id="fromAmount"
-              value={fromAmount}
-              onChange={(e) => {
-                const value = e.target.value;
-                if (/^\d*\.?\d*$/.test(value)) {
-                  setFromAmount(value);
-                }
-              }}
-              placeholder="Enter amount"
-              inputMode="decimal"
-              pattern="\d*\.?\d*"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="toAmount">To</Label>
-            <Input
-              id="toAmount"
-              value={toAmount}
-              onChange={(e) => {
-                const value = e.target.value;
-                if (/^\d*\.?\d*$/.test(value)) {
-                  setToAmount(value);
-                }
-              }}
-              placeholder="Enter amount"
-              inputMode="decimal"
-              pattern="\d*\.?\d*"
-            />
-          </div>
-
-          {error ? (
-            <p className="text-red-500" role="alert">
-              {error}
-            </p>
-          ) : (
-            <div className="flex justify-between">
-              <div className="flex flex-col items-center flex-grow flex-shrink basis-0">
-                <p className="font-medium">From {"->"} To</p>
-                <p className="text-sm text-muted-foreground">
-                  1 = {exchangeRate.toFixed(4)}
-                </p>
-              </div>
-              <div className="flex flex-col items-center flex-grow flex-shrink basis-0">
-                <p className="font-medium">To {"->"} From</p>
-                <p className="text-sm text-muted-foreground">
-                  1 = {(1 / exchangeRate).toFixed(4)}
-                </p>
-              </div>
+    <div className="m-5">
+      <Card className="w-full max-w-md mx-auto">
+        <CardHeader>
+          <CardTitle>Currency Converter</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="fromAmount">From</Label>
+              <Input
+                id="fromAmount"
+                value={fromAmount}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (/^\d*\.?\d*$/.test(value)) {
+                    setFromAmount(value);
+                  }
+                }}
+                placeholder="Enter amount"
+                inputMode="decimal"
+                pattern="\d*\.?\d*"
+              />
             </div>
-          )}
-        </div>
-      </CardContent>
-    </Card>
+
+            <div className="space-y-2">
+              <Label htmlFor="toAmount">To</Label>
+              <Input
+                id="toAmount"
+                value={toAmount}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (/^\d*\.?\d*$/.test(value)) {
+                    setToAmount(value);
+                  }
+                }}
+                placeholder="Enter amount"
+                inputMode="decimal"
+                pattern="\d*\.?\d*"
+              />
+            </div>
+
+            {error ? (
+              <p className="text-red-500" role="alert">
+                {error}
+              </p>
+            ) : (
+              <div className="flex justify-between">
+                <div className="flex flex-col items-center flex-grow flex-shrink basis-0">
+                  <p className="font-medium">From {"->"} To</p>
+                  <p className="text-sm text-muted-foreground">
+                    1 = {exchangeRate.toFixed(4)}
+                  </p>
+                </div>
+                <div className="flex flex-col items-center flex-grow flex-shrink basis-0">
+                  <p className="font-medium">To {"->"} From</p>
+                  <p className="text-sm text-muted-foreground">
+                    1 = {(1 / exchangeRate).toFixed(4)}
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   );
 }
