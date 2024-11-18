@@ -27,7 +27,7 @@ export default function CurrencyConverter() {
   }, [fromAmount, toAmount]);
 
   return (
-    <Card className="w-full max-w-md mx-auto p-5">
+    <Card className="w-full max-w-md mx-auto m-5">
       <CardHeader>
         <CardTitle>Currency Converter</CardTitle>
       </CardHeader>
